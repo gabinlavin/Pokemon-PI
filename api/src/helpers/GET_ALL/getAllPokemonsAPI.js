@@ -4,7 +4,7 @@
  */
 const axios = require("axios");
 
-const getAllPokemonsAPI = async () => {
+const getAllPokemons_API = async () => {
   try {
     const URL_40_POKEMONS =
       "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0";
@@ -96,6 +96,7 @@ const getAllPokemonsAPI = async () => {
     });
 
     console.log(POKEMONS);
+    return POKEMONS
   } catch (error) {
     console.error({
       message: "Error en el helper Get pokemmons of API",
@@ -105,4 +106,4 @@ const getAllPokemonsAPI = async () => {
   }
 };
 
-module.exports = getAllPokemonsAPI;
+module.exports = getAllPokemons_API;

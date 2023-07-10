@@ -1,6 +1,6 @@
-const { Pokemon, Type } = require("../db");
+const { Pokemon, Type } = require("../../db");
 
-const getAllPokemonsDB = async () => {
+const getAllPokemons_DB = async () => {
   try {
 
     //Buscamos los pokemons en la base de datos con el metodo FindAll() de sequelize q me devuelve un array de objetos
@@ -33,18 +33,20 @@ const getAllPokemonsDB = async () => {
     });
     //Parseamos los pokemons porque a veces vienen medios raros q no me trae el nombre y esas boludeces
     //podes quitar esto y fijarte como vienen sin este parseo :3
-    allPokemonsDB = await allPokemonsDB.map( pokemon => {
-        pokemon = JSON.parse(JSON.stringify(pokemon));
-        pokemon.types = pokemon.types.map(t => t.name);
-        return pokemon;
-    })
-
-    return allPokemonsDB
+    let parsedPokemons = allPokemonsDB.map((pokemon) => {
+      let parsedPokemon = pokemon.toJSON();
+      if (parsedPokemon.Types) {
+        parsedPokemon.Types = parsedPokemon.Types.map((type) => type.name);
+      }
+      return parsedPokemon;
+    });
+    
+    return parsedPokemons
   } catch (error) {
     //Siempre crea estos tipos de errores con la clase Error => new Error("soy un error") (acepta solo strings ojo)
-    //porque a veces el throw no funca bien :3
+    //porque a veces el throw no funca bien :3s
     throw new Error(error.message)
   }
 };
 
-module.exports = getAllPokemonsDB;
+module.exports = getAllPokemons_DB;

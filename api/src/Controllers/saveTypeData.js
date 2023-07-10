@@ -9,7 +9,7 @@ const saveTypeData = async (allTypes) => {
     return savedTypes;
   } catch (error) {
     // Lanzar un error con el mensaje de error en caso de que ocurra algún problema
-    throw Error(error.message);
+    throw new Error(error.message);
   }
 };
 

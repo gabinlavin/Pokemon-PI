@@ -14,7 +14,7 @@ const getTypeData = async () => {
     return allTypes;
   } catch (error) {
     // Lanzar un error con el mensaje de error en caso de que ocurra algún problema
-    throw Error(error.message);
+    throw new Error(error.message);
   }
 };
 

@@ -40,15 +40,22 @@ pokemonRouter.post("/", async (req, res) => {
     } = req.body;
 
     // Filtrar los tipos de la base de datos según los tipos proporcionados
-    const filteredDbTypes = (await Type.findAll()).filter((type) =>
-      types.includes(type.name)
-    );
-    const typeIds = filteredDbTypes.map((type) => type.id);
-    console.log(typeIds);
+    // const filteredDbTypes = (await Type.findAll()).filter((type) =>
+    //   types.includes(type.name)
+    // );
+    //const typeIds = filteredDbTypes.map((type) => type.id);
+    //console.log(typeIds);
+    /**
+     * 
+     * 
+     * ACA ESTA UN ERROR
+     * en vez de convertirlo en un array, envia directamente un array desde el front y listo a los types
+     */
+    //if (!typeIds.length)
+    //  throw new Error(`Types table must be initialized before Pokemons table.`);
 
-    if (!typeIds.length)
-      throw Error(`Types table must be initialized before Pokemons table.`);
-
+    if (!types.length)
+       throw new Error(`Types table must be initialized before Pokemons table.`);
     // Crear un nuevo pokemon en la base de datos y asignarle los tipos correspondientes
     const newPokemon = await Pokemon.create({
       name,
@@ -60,7 +67,7 @@ pokemonRouter.post("/", async (req, res) => {
       height,
       weight,
     });
-    await newPokemon.addTypes(typeIds);
+    await newPokemon.addTypes(types);
 
     res.status(200).json({ ...newPokemon.dataValues, types: types });
   } catch (error) {
