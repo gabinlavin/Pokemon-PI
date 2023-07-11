@@ -1,28 +1,31 @@
 const pokemonRouter = require("express").Router();
 const { Pokemon, Type } = require("../db");
 const { validate } = require("uuid");
+const getPokemonByName_API = require("../helpers/GET_BY_NAME/getPokemonAPIByName")
 const { getPokemonTypesFromDb } = require("../utils/helpers");
 const getPokemonData = require("../Controllers/getPokemonData");
 const getPokemonById = require("../controllers/getPokemonById");
-const getPokemonByName = require("../controllers/getPokemonByName");
+const getPokemonByName = require("../Controllers/getPokemonByName");
+const axios = require("axios")
 
 // Ruta para obtener todos los pokemons o un pokemon específico por nombre
 pokemonRouter.get("/", async (req, res) => {
-  let { name } = req.query;
   try {
-    // Si no se proporciona un nombre en la consulta, se obtienen todos los pokemons
-    if (!name) {
-      const allPokemons = await getPokemonData();
-      return res.status(200).json(allPokemons);
+
+    let { name } = req.query;
+    if (name) {
+      name = name.toLowerCase();
+      const pokemon = await getPokemonByName(name);
+      return res.status(200).json(pokemon);
+
     }
-    // Si se proporciona un nombre en la consulta, se busca ese pokemon específico
-    const pokemon = await getPokemonByName(name);
-    if (!pokemon) throw Error(`There is no pokemon named "${name}".`);
-    return res.status(200).json(pokemon);
+    const pokemons = await getPokemonData();
+    return res.json(pokemons);
   } catch (error) {
-    res.status(404).send(error.message);
+    res.status(404).send(error.message)
   }
 });
+
 
 // Ruta para crear un nuevo pokemon
 pokemonRouter.post("/", async (req, res) => {
@@ -39,15 +42,19 @@ pokemonRouter.post("/", async (req, res) => {
       types,
     } = req.body;
 
-    // Filtrar los tipos de la base de datos según los tipos proporcionados
-    const filteredDbTypes = (await Type.findAll()).filter((type) =>
-      types.includes(type.name)
-    );
-    const typeIds = filteredDbTypes.map((type) => type.id);
-    console.log(typeIds);
+    const repeated = await getPokemonByName_API(name)
+    if(repeated.name) throw new Error("Nombre de pokemon repetido")
+    
+    const verificacion = Type.count() 
+    if (verificacion === 0){
+      throw new Error ("No hay tipos en la BD")
+    }
+    // const typeIds = filteredDbTypes.map((type) => type.id);
+    // console.log(typeIds);
 
-    if (!typeIds.length)
-      throw Error(`Types table must be initialized before Pokemons table.`);
+    
+     if (!types.length)
+       throw Error(`Types table must be initialized before Pokemons table.`);
 
     // Crear un nuevo pokemon en la base de datos y asignarle los tipos correspondientes
     const newPokemon = await Pokemon.create({
@@ -60,10 +67,12 @@ pokemonRouter.post("/", async (req, res) => {
       height,
       weight,
     });
-    await newPokemon.addTypes(typeIds);
+    await newPokemon.addTypes(types);
 
     res.status(200).json({ ...newPokemon.dataValues, types: types });
   } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Error al verificar el nombre del Pokémon' });
     res.status(404).json(error.message);
   }
 });
@@ -85,6 +94,7 @@ pokemonRouter.get("/:idPokemon", async (req, res) => {
           .status(200)
           .json({ ...pokemonInDb.dataValues, types: pokemonTypes });
       }
+
     }
     if (!parseInt(idPokemon)) throw Error(`ID must be an integer or a UUID.`);
     // Buscar el pokemon en la API

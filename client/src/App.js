@@ -1,4 +1,7 @@
 import './App.css';
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import Home from './pages/Home/Home';
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   return (

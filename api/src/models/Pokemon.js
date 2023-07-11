@@ -11,8 +11,15 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false,
+      unique: true,
+      validate: {
+        len:[2,20],
+        notNull:{
+          msg:"Please enter your name",
+        },
+      },
     },
     image: {
       type: DataTypes.STRING,
@@ -21,24 +28,57 @@ module.exports = (sequelize) => {
     hp: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        isNumeric: true,
+        min: 0,
+        max: 200,
     },
     attack: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        isNumeric: true,
+        min: 0,
+        max: 200,
+      },
     },
     defense: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+        allowNull: false,
+        validate: {
+          isNumeric: true,
+          min: 0,
+          max: 200,
+        },
     },
     speed: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isNumeric: true,
+        min: 0,
+        max: 200,
+      },
     },
     height: {
       type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          isNumeric: true,
+          min: 0,
+          max: 200,
+        },
     },
     weight: {
       type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          isNumeric: true,
+          min: 0,
+          max: 200,
+        },
     }
+  }
   },
   { timestamps: false }
 );
