@@ -1,1 +1,11 @@
 @import url("./normalize.css");
+
+body {
+    max-width: 1920px;
+    min-width: 350px;
+    height: auto;
+    background-color: #2b292c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

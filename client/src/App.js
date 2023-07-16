@@ -1,22 +1,31 @@
-import './App.css';
-import { Navigate, Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import "./App.css";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Home, Landing, Detail, Form } from "./pages/index";
-import NavBar from './components/NavBar/NavBar';
-
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
-
-const location = useLocation();
+  const location = useLocation();
 
   return (
     <div className="App">
-      {location.pathname !== "/" && <NavBar /> }
-      <Route exact path="/" component={Landing}/>
-      <Route path="/home" render={()=> <Home/>} />
-      <Route exact path="/detail" component={Detail}/>
-      <Route exact path="/create" component={Form}/>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        {/* {location.pathname !== "/" && <NavBar /> } */}
+        <Route path="/home" element={<NavBar />}>
+          <Route index element={<Home />} />
 
+          <Route path="detail/:id" element={<Detail></Detail>} />
+
+          <Route path="create" element={<Form></Form>} />
+        </Route>
+      </Routes>
     </div>
   );
 }

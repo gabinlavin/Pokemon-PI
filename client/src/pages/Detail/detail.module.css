@@ -1,0 +1,123 @@
+.pokemon{
+    background-color: var(--color-background-principal);
+    color: aliceblue;
+    height: auto;
+}
+.container_img_tittle{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.back_img{
+    width: 100vw;
+    max-width: 800px;
+    background-color: var(--color-cards);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 0 40px 40px;
+}
+.container_img {
+    width: 200px;
+    text-align: center;
+}
+.img {
+    width: 100%;
+    height: 100%;
+    
+}
+.tittle {
+    font-size: xx-large;
+}
+.container_types{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.type{
+    min-width: 7em;
+    text-align: center;
+    margin: 0 1em;
+    background-color: #8faec9;
+    padding: .3em;
+    border-radius: 2em;
+    font-size: large;
+    color: black;
+}
+.container_w_h {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.weight{
+    min-width: 7em;
+    text-align: center;
+    font-size: x-large;
+}
+.height{
+    min-width: 7em;
+    text-align: center;
+    font-size: x-large;
+}
+.height > span {
+    color: #69666a;
+    font-size: large;
+}
+.weight > span {
+    color: #69666a;
+    font-size: large;
+}
+.base_stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    
+}
+.base_stats > h3 {
+    font-size: x-large;
+}
+
+.main_base_stats{
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: inherit;
+    
+}
+.stats {
+    margin-top: 2em;
+}
+.stats > span {
+    margin-left: 1em;
+}
+.stats > label {
+    margin-right: 1.5em;
+}
+.stats > progress {
+    width: 20em;
+    border-radius: 20px;
+    height: .8em;
+}
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+}
+/* @keyframes progressbar {
+
+    0% (
+        .stats > progress {
+            width: 0%
+        }    
+    )
+    
+    100% (width: 100%)
+    
+    } */

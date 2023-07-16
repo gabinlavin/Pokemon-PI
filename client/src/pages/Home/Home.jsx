@@ -1,23 +1,26 @@
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getPokemons } from "../../Redux/actions/actions";
+import { getAllTypes } from "../../Redux/actions/actions";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 
 const Home = () => {
 
-const dispatch = useDispatch();
-
-    useEffect(()=>{
+    const dispatch = useDispatch();
+  useEffect(() => {
     dispatch(getPokemons());
-    },[])
+    dispatch(getAllTypes());
+  }, []);
 
-    return(
-        <>
-            <h1>Esta es la vista HOME!!!!</h1>
-            <CardsContainer />
-       </>
-    )
-}
+  return (
+    <>
+      <h1>Esta es la vista HOME!!!!</h1>
+      <SearchBar/>
+      <CardsContainer />
+    </>
+  );
+};
 
 export default Home;

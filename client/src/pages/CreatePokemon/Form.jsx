@@ -2,29 +2,31 @@ import { useState } from "react"
 // import {  useEffect } from "react"
 import {useSelector} from "react-redux";
 // import {useDispatch} from "react-redux";
-
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 //componentes
 // import Card from "../../components/Card/Card"
 
 //actions
-// import { POST_POKEMON, GET_POKEMONS } from "../../Redux/actions/actions";
+ import { createPokemon, getAllTypes, getPokemons } from "../../Redux/actions/actions";
 
 import axios from "axios";
 
 const Form = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const types = useSelector((state)=>state.types);
-    const [form,setPokemon] = useState({
-        name: "",
-        hp: 0,
-        attack: 0,
-        defense: 0,
-        speed: 0,
-        height: 0,
-        weight: 0,
-        image: "",
-        types: [],
-    })
+    const initialPokemon = {
+      name: "",
+      hp: 0,
+      attack: 0,
+      defense: 0,
+      speed: 0,
+      height: 0,
+      weight: 0,
+      image: "",
+      types: [],
+  }
+    const [form,setPokemon] = useState(initialPokemon)
 
     const [errors,setErrors] = useState({
         name: "",
@@ -41,11 +43,7 @@ const Form = () => {
     const handleOnChangeInps = ({ target }) => {
       const valueInp = target.value;
       const nameInp = target.name;
-      const property = target.name;
-      const value = target.value;
-
-      setPokemon({...form, [property]:value})
-      validate({...form, [property]:value})
+      validate({...form, [nameInp]:valueInp})
   
       nameInp === "name" || nameInp === "image"
         ? setPokemon({
@@ -90,8 +88,10 @@ const Form = () => {
 
     const submitHanlder = (event) => {
         event.preventDefault()
-        axios.post("http://localhost:3001/pokemon", form)
-        .then(res=>alert(res))
+        dispatch(createPokemon(form))
+        setPokemon(initialPokemon);
+        event.target.reset();
+        dispatch(getPokemons())
     }
 
     return (
@@ -163,7 +163,6 @@ const Form = () => {
             </div>
             
             <div>
-            
             <input type="number" 
             placeholder="Peso... ej: "
             value={form.weight} 
