@@ -1,0 +1,11 @@
+.home {
+    background-color: var(--color-background-principal);
+    color: aliceblue;
+    height: auto;
+    padding: 1em;
+  }
+  
+  .home h1 {
+    font-size: 2rem;
+    margin-bottom: 1em;
+  }

@@ -1,6 +1,50 @@
 .card{
-    border: 1px solid black;
-    width: fit-content;
-    height: fit-content;
+    background-color: var(--color-cards);
     border-radius: 10px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.card .image-container {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.5em;
+  }
+  
+  .card .info-container {
+    margin-top: 1em;
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5em;
+  }
+  
+  .card p {
+    margin-bottom: 0.3em;
+  }
+  
+  .card .types-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card .type {
+    min-width: 7em;
+    text-align: center;
+    margin: 0.2em;
+    background-color: #8faec9;
+    padding: 0.3em;
+    border-radius: 2em;
+    font-size: 0.8rem;
+    color: black;
+  }

@@ -1,6 +1,15 @@
-.mainContainer{
+.navbar {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-radius: 1px solid black;
-}
+    justify-content: center;
+    align-items: center;
+    background-color: #333035;
+    padding: 10px;
+  }
+  
+  .navLink {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }

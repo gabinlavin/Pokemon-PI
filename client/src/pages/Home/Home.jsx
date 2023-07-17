@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { getPokemons } from "../../Redux/actions/actions";
 import { getAllTypes } from "../../Redux/actions/actions";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import Filters from "../../components/Filters/Filters";
 
 
 const Home = () => {
@@ -16,8 +17,8 @@ const Home = () => {
 
   return (
     <>
-      <h1>Esta es la vista HOME!!!!</h1>
       <SearchBar/>
+      <Filters />
       <CardsContainer />
     </>
   );
