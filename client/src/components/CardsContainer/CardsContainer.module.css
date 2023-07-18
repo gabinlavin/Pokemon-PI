@@ -1,15 +1,15 @@
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 1em;
-    margin-top: 1em;
-  }
-  
-  .cards-container .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-  }
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Mostrar 4 columnas */
+  grid-gap: 1em;
+  margin-top: 1em;
+}
+
+.container .loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
