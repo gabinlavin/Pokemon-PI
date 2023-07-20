@@ -15,8 +15,6 @@ import {
   getPokemons,
 } from "../../Redux/actions/actions";
 
-import axios from "axios";
-
 const Form = () => {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.types);
@@ -31,19 +29,14 @@ const Form = () => {
     image: "",
     types: [],
   };
-  const [form, setPokemon] = useState(initialPokemon);
 
-  const [errors, setErrors] = useState({
-    name: "",
-    hp: 0,
-    attack: 0,
-    defense: 0,
-    speed: 0,
-    height: 0,
-    weight: 0,
-    image: "",
-    types: [],
-  });
+  useEffect(()=>{
+    if (types.length===0 || !types){
+      dispatch(getAllTypes())
+    }
+  },[types]);
+  
+  const [form, setPokemon] = useState(initialPokemon);
 
   const handleOnChangeInps = ({ target }) => {
     const valueInp = target.value;
@@ -122,7 +115,7 @@ const Form = () => {
     if (form.weight <= 0 || !form.weight) {
       errors.weight = "El Peso debe ser mayor a 0";
     }
-    
+
     setInputErrors(errors);
 
     return Object.keys(errors).length === 0; // Retorna true si no hay errores
@@ -152,8 +145,8 @@ const Form = () => {
               name="name"
               placeholder="Introducir Nombre"
             />
-            {inputErrors.hp && (
-              <span className={style.error}>{inputErrors.hp}</span>
+            {inputErrors.name && (
+              <span className={style.error}>{inputErrors.name}</span>
             )}
           </div>
 
@@ -191,6 +184,9 @@ const Form = () => {
               onChange={handleOnChangeInps}
               name="attack"
             />
+            {inputErrors.atack && (
+              <span className={style.error}>{inputErrors.atack}</span>
+            )}
           </div>
 
           <div className={style.inputField}>
@@ -202,6 +198,9 @@ const Form = () => {
               onChange={handleOnChangeInps}
               name="defense"
             />
+            {inputErrors.defense && (
+              <span className={style.error}>{inputErrors.defense}</span>
+            )}
           </div>
 
           <div className={style.inputField}>
@@ -213,6 +212,9 @@ const Form = () => {
               onChange={handleOnChangeInps}
               name="speed"
             />
+            {inputErrors.speed && (
+              <span className={style.error}>{inputErrors.speed}</span>
+            )}
           </div>
 
           <div className={style.inputField}>
@@ -224,6 +226,9 @@ const Form = () => {
               onChange={handleOnChangeInps}
               name="height"
             />
+            {inputErrors.height && (
+              <span className={style.error}>{inputErrors.height}</span>
+            )}
           </div>
 
           <div className={style.inputField}>
@@ -235,6 +240,9 @@ const Form = () => {
               onChange={handleOnChangeInps}
               name="weight"
             />
+            {inputErrors.weight && (
+              <span className={style.error}>{inputErrors.weight}</span>
+            )}
           </div>
         </div>
       </div>

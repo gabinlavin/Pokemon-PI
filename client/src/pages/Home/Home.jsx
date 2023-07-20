@@ -1,10 +1,9 @@
 // Componente Home
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, getAllTypes, orderByAbc, orderByStrength } from "../../Redux/actions/actions";
+import { getPokemons, getAllTypes } from "../../Redux/actions/actions";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Filters from "../../components/Filters/Filters";
-import Orders from "../../components/Orders/Orders";
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import Pagination from "../../components/Paginado/Paginado";
 import { setCurrentPage } from "../../Redux/actions/actions";
@@ -18,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getPokemons());
     dispatch(getAllTypes());
-  }, []);
+  }, [dispatch]);
 
   // Calcular la cantidad total de páginas
   const totalPages = Math.ceil(pokemons.length / perPage);
@@ -28,25 +27,10 @@ const Home = () => {
     dispatch(setCurrentPage(page));
   };
 
-  // Funciones de ordenamiento
-  const handleOrderByAbc = (event) => {
-    const value = event.target.value;
-    dispatch(orderByAbc(value));
-  };
-
-  const handleOrderByStrength = (event) => {
-    const value = event.target.value;
-    dispatch(orderByStrength(value));
-  };
-
   return (
     <>
       <SearchBar />
       <Filters />
-      <Orders
-        orderByAbc={handleOrderByAbc}
-        orderByStrength={handleOrderByStrength}
-      />
       <CardsContainer />
       <Pagination
         totalPages={totalPages}

@@ -1,12 +1,9 @@
 import "./App.css";
 import {
-  Navigate,
   Route,
   Routes,
-  useNavigate,
   useLocation,
 } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { Home, Landing, Detail, Form } from "./pages/index";
 import NavBar from "./components/NavBar/NavBar";
 

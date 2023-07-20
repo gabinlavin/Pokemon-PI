@@ -1,51 +1,54 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { orderByAbc, orderByStrength } from "../../Redux/actions/actions";
-import style from "./orders.module.css"
-import React from "react"
 
+// import { useDispatch } from "react-redux";
+// import { orderByAbc, orderByStrength } from "../../Redux/actions/actions";
+// import style from "./orders.module.css";
+// import React from "react";
 
-const Orders = () => {
-  const dispatch = useDispatch();
-  const [order, setOrder] = useState({
-    abc: "",
-    ataque: "",
-  });
+// const Orders = ({ order, setOrder }) => {
+//   const dispatch = useDispatch();
+//   const handleOrderByAbc = ({ target }) => {
+//     setOrder({ ...order, abc: target.value });
+//     dispatch(orderByAbc(target.value));
+//   };
+//   const handleOrderByStrength = ({ target }) => {
+//     setOrder({ ...order, ataque: target.value });
+//     dispatch(orderByStrength(target.value));
+//   };
 
-  const handleOrderByAbc = ({ target }) => {
-    setOrder({ ...order, abc: target.value });
-    dispatch(orderByAbc(target.value));
-  };
-  const handleOrderByStrength = ({ target }) => {
-    setOrder({ ...order, ataque: target.value });
-    dispatch(orderByStrength(target.value));
-  };
-  return (
-    <div>
-      <select name="filterAbc"
-       onChange={handleOrderByAbc}
-        key={order.abc}
-        className={style.olaLink}>
-        <option value="all">Orden alfabetico</option>
-        <option value="asc">A - Z</option>
-        <option value="desc">Z - A</option>
-      </select>
-      <select
-        name="filterAbc"
-        onChange={handleOrderByStrength}
-        key={order.ataque}
-        className={style.olaLink}
-      >
-        <option value="all">Orden por ataque</option>
-        <option value="mayor">Ataque: Menor a Mayor</option>
-        <option value="menor">Ataque: Mayor a Menor</option>
-      </select>
-    </div>
-  );
-};
-export default Orders;
-
-
+//   return (
+//     <div>
+//       <select
+//         name="filterAbc"
+//         onChange={handleOrderByAbc}
+//         key={order.abc}
+//         className={style.olaLink}
+//         value={order.abc}
+//       >
+//         {" "}
+//         <option value="" key="default" hidden defaultValue={"Abc"}>
+//           Orden Alfabetico
+//         </option>
+//         <option value="asc">A - Z</option>
+//         <option value="desc">Z - A</option>
+//       </select>
+//       <select
+//         name="Filterataque"
+//         onChange={handleOrderByStrength}
+//         key={order.ataque}
+//         className={style.olaLink}
+//         value={order.ataque}
+//       >
+//         {" "}
+//         <option value="" key="default" hidden defaultValue={"Ataque"}>
+//           Orden por Ataque
+//         </option>
+//         <option value="mayor">Ataque: Menor a Mayor</option>
+//         <option value="menor">Ataque: Mayor a Menor</option>
+//       </select>
+//     </div>
+//   );
+// };
+// export default Orders;
 
 // Componente Orders
 // import React from "react";
@@ -84,4 +87,3 @@ export default Orders;
 // };
 
 // export default Orders;
-
