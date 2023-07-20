@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+// Componente Home
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, getAllTypes } from "../../Redux/actions/actions";
+import { getPokemons, getAllTypes, orderByAbc, orderByStrength } from "../../Redux/actions/actions";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Filters from "../../components/Filters/Filters";
 import Orders from "../../components/Orders/Orders";
@@ -27,11 +28,25 @@ const Home = () => {
     dispatch(setCurrentPage(page));
   };
 
+  // Funciones de ordenamiento
+  const handleOrderByAbc = (event) => {
+    const value = event.target.value;
+    dispatch(orderByAbc(value));
+  };
+
+  const handleOrderByStrength = (event) => {
+    const value = event.target.value;
+    dispatch(orderByStrength(value));
+  };
+
   return (
     <>
       <SearchBar />
       <Filters />
-      <Orders />
+      <Orders
+        orderByAbc={handleOrderByAbc}
+        orderByStrength={handleOrderByStrength}
+      />
       <CardsContainer />
       <Pagination
         totalPages={totalPages}

@@ -1,15 +1,7 @@
-.navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(43, 43, 43);
-    padding: 10px;
-  }
-  
-  .navLink {
-    padding: 10px 15px;
+.olaLink {
+    padding: 8px 8px;
     border: unset;
-    border-radius: 10px;
+    border-radius: 15px;
     color: #e8e8e8;
     z-index: 1;
     background: rgb(43, 43, 43);
@@ -18,11 +10,8 @@
     font-size: 17px;
     -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
     box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    transition: all 250ms;
-    overflow: hidden;
-  }
-
-  .navLink::before {
+}
+.olaLink::before {
     content: "";
     position: absolute;
     top: 0;
@@ -30,17 +19,18 @@
     height: 100%;
     width: 0;
     border-radius: 15px;
-    background-color: #e8e8e8;
+    background-color: #491212;
     z-index: -1;
     -webkit-box-shadow: 4px 8px 19px -3px rgba(255, 255, 255, 0.27);
     box-shadow: 4px 8px 19px -3px rgba(255, 255, 255, 0.27);
     transition: all 250ms
    }  
   
-   .navLink:hover {
-    color: #212121;
+   .olaLink:hover {
+    color: #ffffff;
   }
   
-  .navLinkn:hover::before {
+  .olaLink:hover::before {
     width: 100%;
   }
+  

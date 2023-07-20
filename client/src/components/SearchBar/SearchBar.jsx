@@ -27,11 +27,11 @@ const SearchBar = () => {
           type="text"
           value={searchTerm}
           onChange={handleInputChange}
-          placeholder="Buscar pokémon por nombre..."
+          placeholder="Buscar..."
           className={style.input}
         />
-        <button type="submit" className={style.button}>
-          Buscar
+        <button type="submit" className={style.button} onSubmit={handleSubmit}>
+        <span class="span">🔎</span>
         </button>
       </form>
     </div>

@@ -1,0 +1,72 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .inputField {
+    margin-bottom: 10px;
+  }
+  
+  .inputField input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .inputField input::placeholder {
+    color: #aaa;
+  }
+  
+  .checkboxContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    padding: 30px 50px;
+    border: none;
+    border-radius: 10px;
+    color: #e8e8e8;
+    background: rgb(43, 43, 43);
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+  
+  .checkboxLabel:hover {
+    background: #491212;
+  }
+  
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .submitButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    background: rgb(43, 43, 43);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submitButton:hover {
+    background: #491212;
+  }
+  

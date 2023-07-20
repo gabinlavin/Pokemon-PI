@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemonOfApi, getPokemonOfDb, getPokemons, getPokemonsForTypes } from "../../Redux/actions/actions";
 import { useState } from "react";
+import style from './filters.module.css'
+
 
 const Filters = () => {
     const dispatch = useDispatch();
@@ -37,7 +39,8 @@ const Filters = () => {
       <select 
        name="types"
        onChange={handleOnChangeTypes}
-       value={options.types}>
+       value={options.types}
+       className={style.olaLink}>
         {" "}
         <option value="" key="default" hidden defaultValue={"Tipos"}>
           Tipos
@@ -52,7 +55,8 @@ const Filters = () => {
         <select
         name="Origin"
         value={options.is_default}
-        onChange={handleOnChangeOrigin}>
+        onChange={handleOnChangeOrigin}
+        className={style.olaLink}>
              {" "}
         <option value="" key="default" hidden defaultValue={"Tipos"}>
           Origen
@@ -64,7 +68,7 @@ const Filters = () => {
             Api
         </option>
         </select>
-      <button onClick={resetPokemonsTypes}>Resetear Filtros</button>
+      <button className={style.olaLink} onClick={resetPokemonsTypes} >Resetear Filtros</button>
     </div>
   );
 };

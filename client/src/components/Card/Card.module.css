@@ -1,50 +1,82 @@
-.card{
-    background-color: var(--color-cards);
-    border-radius: 10px;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.card {
+  width: 190px;
+  height: 254px;
+  background: rgb(43, 43, 43);
+  border-radius: 0.4em;
+  box-shadow: 0.3em 0.3em 0.7em #00000015;
+  transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: rgb(250, 250, 250) 0.2em solid;
+  position: relative; /* Añadido */
 }
 
-.card .image-container {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .card img {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 0.5em;
-  }
-  
-  .card .info-container {
-    margin-top: 1em;
-  }
-  
-  .card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5em;
-  }
-  
-  .card p {
-    margin-bottom: 0.3em;
-  }
-  
-  .card .types-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .card .type {
-    min-width: 7em;
-    text-align: center;
-    margin: 0.2em;
-    background-color: #8faec9;
-    padding: 0.3em;
-    border-radius: 2em;
-    font-size: 0.8rem;
-    color: black;
-  }
+.card:hover {
+  border: #491212 0.2em solid;
+}
+
+.category {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: rgb(236, 236, 236);
+  padding: 10px 7px 0;
+}
+
+.name {
+  font-weight: 600;
+  color: rgb(236, 236, 236); /* Añadido */
+  margin: 0; /* Añadido */
+  padding: 0 7px; /* Añadido */
+}
+
+.buttonLink {
+  padding: 8px 10px; /* Modifica el valor según tu preferencia */
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  z-index: 1;
+  background: rgb(43, 43, 43);
+  position: absolute;
+  bottom: 5px; /* Modifica el valor según tu preferencia */
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  font-size: 10px; /* Modifica el valor según tu preferencia */
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.buttonLink:hover {
+  color: #fff;
+}
+
+.buttonLink::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #491212;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(255, 255, 255, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(255, 255, 255, 0.27);
+  transition: all 250ms;
+}
+
+.buttonLink:hover::before {
+  width: 100%;
+}
+
+.imageContainer {
+  height: 50%; /* Ajusta la altura según tu preferencia */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+}
