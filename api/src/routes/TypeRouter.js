@@ -1,7 +1,7 @@
 const typeRouter = require("express").Router();
 const { Type } = require("../db");
-const getTypeData = require("../controllers/getTypeData");
-const saveTypeData = require("../controllers/saveTypeData");
+const getTypeData = require("../Controllers/getTypeData");
+const saveTypeData = require("../Controllers/saveTypeData");
 
 // Ruta para obtener todos los tipos de pokemon
 typeRouter.get("/", async (req, res) => {
