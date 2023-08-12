@@ -28,56 +28,67 @@ module.exports = (sequelize) => {
     hp: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
       validate: {
         isNumeric: true,
         min: 0,
         max: 200,
     },
-    attack: {
-      type: DataTypes.INTEGER,
+    
+  },
+  attack: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+    validate: {
+      isNumeric: true,
+      min: 0,
+      max: 200,
+    },
+  },
+  defense: {
+    type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
       validate: {
         isNumeric: true,
         min: 0,
         max: 200,
       },
+  },
+  speed: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+    validate: {
+      isNumeric: true,
+      min: 0,
+      max: 200,
     },
-    defense: {
-      type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          isNumeric: true,
-          min: 0,
-          max: 200,
-        },
-    },
-    speed: {
-      type: DataTypes.INTEGER,
+  },
+  height: {
+    type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
       validate: {
         isNumeric: true,
         min: 0,
         max: 200,
       },
-    },
-    height: {
-      type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          isNumeric: true,
-          min: 0,
-          max: 200,
-        },
-    },
-    weight: {
-      type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          isNumeric: true,
-          min: 0,
-          max: 200,
-        },
-    }
+  },
+  weight: {
+    type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      validate: {
+        isNumeric: true,
+        min: 0,
+        max: 200,
+      },
+  },
+  is_default: {
+    defaultValue: false,
+    type: DataTypes.BOOLEAN,
   }
   },
   { timestamps: false }

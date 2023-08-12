@@ -16,6 +16,7 @@ module.exports = {
         height: pokemon.height,
         weight: pokemon.weight,
         types: pokemon.types.map((type) => type.type.name),
+        is_default: pokemon.is_default
       };
     },
   

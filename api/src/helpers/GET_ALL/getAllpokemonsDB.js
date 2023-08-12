@@ -36,11 +36,12 @@ const getAllPokemons_DB = async () => {
     let parsedPokemons = allPokemonsDB.map((pokemon) => {
       let parsedPokemon = pokemon.toJSON();
       if (parsedPokemon.Types) {
-        parsedPokemon.Types = parsedPokemon.Types.map((type) => type.name);
+        parsedPokemon.types = parsedPokemon.Types.map((type) => type.name);
+        delete parsedPokemon.Types
       }
       return parsedPokemon;
     });
-    
+    console.log(parsedPokemons)
     return parsedPokemons
   } catch (error) {
     //Siempre crea estos tipos de errores con la clase Error => new Error("soy un error") (acepta solo strings ojo)
