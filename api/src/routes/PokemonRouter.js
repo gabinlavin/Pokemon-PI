@@ -4,7 +4,7 @@ const { validate } = require("uuid");
 const getPokemonByName_API = require("../helpers/GET_BY_NAME/getPokemonAPIByName")
 const { getPokemonTypesFromDb } = require("../utils/helpers");
 const getPokemonData = require("../Controllers/getPokemonData");
-const getPokemonById = require("../controllers/getPokemonById");
+const getPokemonById = require("../Controllers/getPokemonById");
 const getPokemonByName = require("../Controllers/getPokemonByName");
 const axios = require("axios")
 
